@@ -6,6 +6,8 @@ import com.git.hui.boot.autoconfig.AutoConfBean;
 import com.git.hui.boot.bean.autoload.factory.FacDemoBean;
 import com.git.hui.boot.bean.autoload.simple.AnoDemoBean;
 import com.git.hui.boot.bean.autoload.simple.ConfigDemoBean;
+import com.git.hui.boot.bean.config.BeanLoadConfig;
+import com.git.hui.boot.bean.util.SpringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -74,6 +76,8 @@ public class DemoController {
         map.put("autoConf", autoConfBean != null ? autoConfBean.getName() : "null");
 
         System.out.println("user:"+wuUser +"  ,car: "+car);
+        BeanLoadConfig bean = SpringUtils.getBean(BeanLoadConfig.class);
+        System.out.println("configBean是否是代理对象？："+bean);
         return JSON.toJSONString(map);
     }
 }

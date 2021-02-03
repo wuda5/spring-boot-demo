@@ -4,7 +4,10 @@ import com.git.hui.boot.bean.autoload.factory.DemoFactoryBean;
 import com.git.hui.boot.bean.autoload.factory.FacDemoBean;
 import com.git.hui.boot.bean.autoload.simple.AnotherConfigBean;
 import com.git.hui.boot.bean.autoload.simple.ConfigDemoBean;
+import com.git.hui.boot.bean.util.SpringUtils;
 import org.springframework.aop.framework.ProxyFactoryBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,6 +16,20 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class BeanLoadConfig {
+
+//    @Bean
+//    @ConditionalOnMissingBean(SpringUtils.class)
+//    public SpringUtils getSpringUtils(ApplicationContext applicationContext) {
+//        SpringUtils.setApplicationContext(applicationContext);
+//        return new SpringUtils();
+//    }
+
+    @Bean
+    @ConditionalOnMissingBean(SpringUtils.class)
+    public SpringUtils getSpringUtils(ApplicationContext applicationContext) {
+        SpringUtils.setApplicationContext(applicationContext);
+        return new SpringUtils();
+    }
     @Bean
     public ConfigDemoBean configDemoBean() {
         return new ConfigDemoBean();
