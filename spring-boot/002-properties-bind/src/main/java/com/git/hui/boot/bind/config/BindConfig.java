@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
+import javax.annotation.Resource;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -29,6 +30,7 @@ public class BindConfig {
     private Map<String, String> map;
 
     private Pwd mainPwd;
+
 
     private Jwt jwt;
 }

@@ -9,6 +9,8 @@ import com.git.hui.boot.bean.autoload.simple.ConfigDemoBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import wu.test.TestWuAutoConfig;
+import wu.test.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +50,17 @@ public class DemoController {
     @Autowired
     private AutoBean autoBean;
 
+    /**
+     * 测试引入第三方包的情况
+     */
+    @Autowired
+    private User wuUser;
+    /**
+     * 测试引入第三方包的情况
+     */
+    @Autowired
+    private TestWuAutoConfig.Car car;
+
     @Autowired
     private AutoConfBean autoConfBean;
 
@@ -59,6 +72,8 @@ public class DemoController {
         map.put("fac", facDemoBean.getName(name));
         map.put("auto", autoBean != null ? autoBean.getName() : "null");
         map.put("autoConf", autoConfBean != null ? autoConfBean.getName() : "null");
+
+        System.out.println("user:"+wuUser +"  ,car: "+car);
         return JSON.toJSONString(map);
     }
 }
