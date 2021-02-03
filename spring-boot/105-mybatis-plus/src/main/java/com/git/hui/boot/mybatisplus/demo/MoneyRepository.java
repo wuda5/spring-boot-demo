@@ -1,6 +1,7 @@
 package com.git.hui.boot.mybatisplus.demo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.git.hui.boot.mybatisplus.entity.MoneyPo;
 import com.git.hui.boot.mybatisplus.mapper.MoneyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class MoneyRepository {
         List<MoneyPo> list =
                 moneyMapper.selectList(new QueryWrapper<MoneyPo>().lambda().eq(MoneyPo::getName, po.getName()));
         System.out.println("after insert: " + list);
+
+        QueryWrapper<MoneyPo> query = Wrappers.query(new MoneyPo());//相当查询全部
+        moneyMapper.selectList(query);
 
         // 修改
         po.setMoney(po.getMoney() + 300);
