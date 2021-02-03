@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Created by @author yihui in 16:59 18/10/10.
  */
-@Configuration
+//@Configuration
 //@ComponentScan("com.git.hui.boot.autoconfig")
 public class TestWuAutoConfig {
 

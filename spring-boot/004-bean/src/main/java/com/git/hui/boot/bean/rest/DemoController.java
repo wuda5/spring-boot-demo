@@ -77,7 +77,9 @@ public class DemoController {
 
         System.out.println("user:"+wuUser +"  ,car: "+car);
         BeanLoadConfig bean = SpringUtils.getBean(BeanLoadConfig.class);
-        System.out.println("configBean是否是代理对象？："+bean);
+        System.out.println("configBean是否是cglib代理对象？："+bean);
+        TestWuAutoConfig testWuAutoConfig = SpringUtils.getBean(TestWuAutoConfig.class);
+        System.out.println("configBean  testWuAutoConfig 是否是代理对象？(没有加@Configuration 就不是)："+testWuAutoConfig);
         return JSON.toJSONString(map);
     }
 }
